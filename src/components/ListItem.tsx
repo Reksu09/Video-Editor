@@ -1,5 +1,6 @@
 import React from 'react';
-import { useCurrentFrame, interpolate } from 'remotion';
+import { useCurrentFrame, interpolate, Audio, Sequence } from 'remotion';
+import typingSfx from '../sfx/Keyboard Typing Sound Effects.mp3';
 
 const COLORS = [
     '#FFFF00', // 1. Yellow
@@ -43,6 +44,7 @@ export const ListItem: React.FC<ListItemProps> = ({ index, text, startFrame, dis
     const textColor = isActive ? '#FFCC99' : '#FFFFFF';
     // Number styling
     const numberColor = COLORS[index % COLORS.length];
+
     return (
         <div style={{
             display: 'flex',
@@ -53,6 +55,9 @@ export const ListItem: React.FC<ListItemProps> = ({ index, text, startFrame, dis
             color: 'white',
             marginBottom: 30,
         }}>
+            <Sequence from={startFrame} durationInFrames={typingDuration} layout="none">
+                <Audio src={typingSfx} />
+            </Sequence>
             <span style={{
                 color: numberColor,
                 marginRight: 10,
