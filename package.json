@@ -1,0 +1,48 @@
+{
+  "name": "video-generator",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@google/generative-ai": "^0.24.1",
+    "@remotion/cli": "4.0.421",
+    "@remotion/tailwind-v4": "4.0.421",
+    "clsx": "^2.1.1",
+    "ffmpeg": "^0.0.4",
+    "lucide-react": "^0.563.0",
+    "rc-slider": "^11.1.9",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.421",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.421",
+    "@remotion/player": "^4.0.421",
+    "@types/node": "^25.2.3",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/web": "0.0.166",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "9.19.0",
+    "prettier": "3.6.0",
+    "typescript": "5.9.3",
+    "vite": "^7.3.1"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "start": "vite",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "lint": "eslint src && tsc"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title1": "Ranking The",
+  "title2": "Best",
+  "title3": "Make a Word",
+  "title4": "Challenge",
+  "listItems": [
+    {
+      "text": "Oops 🤣",
+      "start": 558,
+      "rank": 1,
+      "duration": 175
+    },
+    {
+      "text": "Focus 💪",
+      "start": 360,
+      "rank": 2,
+      "duration": 198
+    },
+    {
+      "text": "Clever ✨",
+      "start": 162,
+      "rank": 3,
+      "duration": 198
+    },
+    {
+      "text": "Wordplay 🤓",
+      "start": 0,
+      "rank": 4,
+      "duration": 162
+    }
+  ],
+  "videos": [
+    {
+      "trimStart": 0,
+      "trimEnd": 5.409,
+      "text": "Wordplay 🤓",
+      "url": "/exports/source/1770795080565-1.mp4"
+    },
+    {
+      "trimStart": 0,
+      "trimEnd": 6.627,
+      "text": "Clever ✨",
+      "url": "/exports/source/1770795080573-2.mp4"
+    },
+    {
+      "trimStart": 0,
+      "trimEnd": 6.609,
+      "text": "Focus 💪",
+      "url": "/exports/source/1770795080584-3.mp4"
+    },
+    {
+      "trimStart": 0,
+      "trimEnd": 5.856,
+      "text": "Oops 🤣",
+      "url": "/exports/source/1770795080595-4.mp4"
+    }
+  ]
+}
