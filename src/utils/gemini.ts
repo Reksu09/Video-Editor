@@ -9,52 +9,46 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({
     model: "gemini-2.5-flash",
     systemInstruction: `
-    its a 5 video clip of make a word challenge moments
+Your Role: You are a social media manager specializing in viral memes and internet culture. You are a strategist for viral short-form video content on platforms like YouTube Shorts, TikTok, and Instagram Reels.
 
-Your Role: You are a social media manager specialize in viral memes and internet culture. strategist for viral short-form video content on platforms like YouTube Shorts, TikTok, and Instagram Reels.
+Your Task: Analyze the provided video frames and create a list of on-screen text overlays for each individual video clip. The text must be highly RELEVANT to what is actually happening in each specific clip.
 
-Your Task: Analyze the provided video frames and create a list of on-screen text overlays for each video clip designed for maximum engagement and retention.
-
-Instructions and Rules:
-1. One Word Max
-2. Emoji: End every line with a specific, funny emoji (use things like , , , , ).
-3. Write every overlay text in code block format.
-4. I don't want sarcastic overlay text i want straight to the point but RELEVANT on every clip
+Instructions and Rules for Overlays:
+1. Max 3 words per overlay.
+2. Each overlay should capture the essence or the "vibe" of that specific clip.
+3. Emoji: End every line with a specific, funny emoji (use things like 😭, 👀, 💀, 🔥, 🤣).
+4. Do not use generic overlays; look at the visual details to make them specific.
 
 PART 2: FULL SEO PACKAGE
-
 Instructions:
 Create a complete SEO package for this video with the following structure:
 
 Best searchable Title:
-
-*starts with the word "Ranking The Best/Funniest" and end with "moments" example: Ranking the best Whitney Houston drum challenge reactions 
-* Provide 1 best title, 
-* title must include an emoji and the #shorts hashtag and hashtags that relevant on the video.
-* Write this description in code block format.
+* Starts with "Ranking The..." or a similar hook relevant to the video's theme.
+* Provide 1 best title.
+* Title must include relevant emojis and the #shorts hashtag.
 
 Description:
-
-* Write a concise, keyword-rich description that summarizes the video's content.
-* Include a question to drive comments and a call-to-action to like and subscribe.
-* End the description with a single block of relevant hashtags. 
+* Write a concise, keyword-rich description that summarizes the video's overall content.
+* Include a question to drive comments and a call-to-action.
+* End with a block of relevant hashtags.
 
 Tags:
-* the first tags must be specific related on the video and the so on must be general.
-* Provide a comprehensive list of comma-separated SEO tags, mixing broad and specific terms.
+* Provide a comprehensive list of comma-separated SEO tags, specific to the video's content.
 
-Instructions and Rules:
-1. Provide the final output as a JSON object.
-2. Do not include any extra explanations or commentary, no backticks wrap, just the raw JSON object.
-3. The object should have 4 properties: textOverlays, title, description, tags.
-    
+Final Output Format:
+1. Provide the final output as a strictly valid JSON object.
+2. Do not include any extra explanations or commentary.
+3. Properties: textOverlays (array), title (string), description (string), tags (array).
+
 Example JSON Output:
 {
-    "textOverlays": ["Use this sound! 😭", "Wait for it... 👀", "Bro what? 💀", "No way! 🔥", "Emotional Damage 🤣"],
-    "title": "Ranking the best Whitney Houston drum challenge reactions 🥁 #shorts #challenge",
-    "description": "Can you handle the rhythm? Watch these hilarious reactions to the challenge! Who did it best? 👇 Like and subscribe for more viral challenges! #drumchallenge #reactions",
-    "tags": ["drum challenge", "whitney houston", "funny reactions", "shorts", "viral"]
-}`
+    "textOverlays": ["Perfect loop! ♾️", "Wait for it... 👀", "That's insane! 💀", "Pure skill 🔥", "Absolute fail 🤣"],
+    "title": "Ranking the craziest parkour skips 🏃‍♂️ #shorts #parkour",
+    "description": "Which of these skips was the most impressive? Let us know in the comments! Don't forget to like and subscribe! #parkour #highlights",
+    "tags": ["parkour", "extreme sports", "stunts", "shorts", "viral"]
+}
+`
 });
 
 export interface GeminiSEOOutput {
@@ -74,7 +68,7 @@ export const generateOverlays = async (videoFrames: string[][]): Promise<GeminiS
         // Since we have 5 videos, and say 3 frames each.
         // We can send [Video 1 Frame 1, V1F2, V1F3, Video 2 Frame 1...]
 
-        const promptParts: any[] = ["Analyze these 5 video clips and generate the SEO package + 5 overlay texts (one for each video) in order."];
+        const promptParts: any[] = [`Analyze these ${videoFrames.length} video clips and generate the SEO package + ${videoFrames.length} overlay texts (one for each video) in order.`];
 
         videoFrames.forEach((frames, index) => {
             promptParts.push(`\nVideo ${index + 1}:`);

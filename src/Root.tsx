@@ -14,14 +14,24 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         calculateMetadata={async ({ props }) => {
           const fps = 30;
+          const transitionFrames = 5;
           const videos = (props as any).videos || [];
-          const duration = videos.reduce((acc: number, v: any) => {
-            const dur = Math.max(0, Math.floor(((v.trimEnd || 0) - v.trimStart) * fps));
-            return acc + dur;
-          }, 0);
+
+          let duration = 0;
+          videos.forEach((v: any, i: number) => {
+            const startFrame = Math.floor(v.trimStart * fps);
+            const rawEndFrame = Math.floor((v.trimEnd || 10) * fps);
+            const endFrame = Math.max(startFrame + 1, rawEndFrame);
+            const videoDuration = endFrame - startFrame;
+
+            duration += videoDuration;
+            if (i < videos.length - 1) {
+              duration -= transitionFrames;
+            }
+          });
 
           return {
-            durationInFrames: Math.max(1, duration),
+            durationInFrames: Math.max(1, Math.floor(duration)),
             props,
           };
         }}
