@@ -94,7 +94,27 @@ export default defineConfig({
                                     process.stderr.write(data);
                                 });
 
+                                const cleanup = () => {
+                                    try {
+                                        console.log('[Render API] Cleaning up temporary files...');
+                                        // 1. Delete source videos
+                                        if (fs.existsSync(sourceDir)) {
+                                            const files = fs.readdirSync(sourceDir);
+                                            for (const file of files) {
+                                                fs.unlinkSync(path.join(sourceDir, file));
+                                            }
+                                        }
+                                        // 2. Delete props file
+                                        if (fs.existsSync(propsPath)) {
+                                            fs.unlinkSync(propsPath);
+                                        }
+                                    } catch (cleanupErr) {
+                                        console.error('[Render API] Cleanup warning:', cleanupErr);
+                                    }
+                                };
+
                                 renderProcess.on('close', (code) => {
+                                    cleanup();
                                     if (code !== 0) {
                                         console.error(`[Render API] Process exited with code ${code}`);
                                         res.statusCode = 500;
