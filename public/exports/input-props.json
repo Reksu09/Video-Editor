@@ -4,61 +4,73 @@
   "title2": "Best",
   "color2": "#F6D555",
   "title3": "Make a Word",
-  "color3": "#ff0000",
+  "color3": "#FFCC99",
   "title4": "Challenge",
   "color4": "#FFFFFF",
-  "title5": "ASDSDA",
-  "color5": "#00a8e0",
+  "title5": "",
+  "color5": "#00de3b",
   "listItems": [
     {
-      "text": "Kid's words 💀",
-      "start": 3212,
+      "text": "Type here...",
+      "start": 629,
       "rank": 1,
-      "duration": 2102
+      "duration": 147
     },
     {
-      "text": "Bro code 👀",
-      "start": 2398,
+      "text": "Type here...",
+      "start": 467,
       "rank": 2,
-      "duration": 819
+      "duration": 167
     },
     {
-      "text": "Confident answers 🔥",
-      "start": 1071,
+      "text": "Type here...",
+      "start": 315,
       "rank": 3,
-      "duration": 1332
+      "duration": 157
     },
     {
-      "text": "Pure confusion 🤣",
-      "start": 0,
+      "text": "Type here...",
+      "start": 160,
       "rank": 4,
-      "duration": 1076
+      "duration": 160
+    },
+    {
+      "text": "Type here...",
+      "start": 0,
+      "rank": 5,
+      "duration": 165
     }
   ],
   "videos": [
     {
       "trimStart": 0,
-      "trimEnd": 35.876009,
-      "text": "Pure confusion 🤣",
-      "url": "/exports/source/1770847911178-1.mp4"
+      "trimEnd": 5.512,
+      "text": "",
+      "url": "/exports/source/1770868803992-snaptik_7592780971334782263_v3.mp4"
     },
     {
       "trimStart": 0,
-      "trimEnd": 44.4,
-      "text": "Confident answers 🔥",
-      "url": "/exports/source/1770847911186-2.mp4"
+      "trimEnd": 5.359,
+      "text": "",
+      "url": "/exports/source/1770868809209-snaptik_7593449496974216466_v3.mp4"
     },
     {
       "trimStart": 0,
-      "trimEnd": 27.333333,
-      "text": "Bro code 👀",
-      "url": "/exports/source/1770847911196-3.mp4"
+      "trimEnd": 5.236,
+      "text": "",
+      "url": "/exports/source/1770868813187-snaptik_7593469562742459678_v3.mp4"
     },
     {
       "trimStart": 0,
-      "trimEnd": 70.066667,
-      "text": "Kid's words 💀",
-      "url": "/exports/source/1770847911226-4.mp4"
+      "trimEnd": 5.583,
+      "text": "",
+      "url": "/exports/source/1770868817534-snaptik_7593482265032740110_v3.mp4"
+    },
+    {
+      "trimStart": 0,
+      "trimEnd": 4.93,
+      "text": "",
+      "url": "/exports/source/1770868821360-snaptik_7593835386921585951_v3.mp4"
     }
   ]
 }
