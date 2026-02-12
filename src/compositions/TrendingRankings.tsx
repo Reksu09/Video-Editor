@@ -82,7 +82,7 @@ export const TrendingRankings: React.FC<TrendingRankingsProps> = ({
             };
         });
 
-        const fps = 30;
+        const fps = 60;
         let duration = 0;
         videos.forEach((v, i) => {
             const startFrame = Math.floor(v.trimStart * fps);
@@ -106,7 +106,7 @@ export const TrendingRankings: React.FC<TrendingRankingsProps> = ({
                 <AbsoluteFill>
                     <TransitionSeries>
                         {videos.map((v, i) => {
-                            const fps = 30;
+                            const fps = 60;
                             const startFrame = Math.floor(v.trimStart * fps);
                             const rawEndFrame = Math.floor((v.trimEnd || 10) * fps);
                             const endFrame = Math.max(startFrame + 1, rawEndFrame);
@@ -150,7 +150,7 @@ export const TrendingRankings: React.FC<TrendingRankingsProps> = ({
                     {/* Render Transition SFX */}
                     {(() => {
                         let currentOffset = 0;
-                        const fps = 30;
+                        const fps = 60;
                         return videos.map((v, i) => {
                             const startFrame = Math.floor(v.trimStart * fps);
                             const rawEndFrame = Math.floor((v.trimEnd || 10) * fps);

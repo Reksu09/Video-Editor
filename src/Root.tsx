@@ -9,11 +9,11 @@ export const RemotionRoot: React.FC = () => {
         id="TrendingRankings"
         component={TrendingRankings}
         durationInFrames={600} // Default if metadata fails
-        fps={30}
+        fps={60}
         width={1080}
         height={1920}
         calculateMetadata={async ({ props }) => {
-          const fps = 30;
+          const fps = 60;
           const transitionFrames = 5;
           const videos = (props as any).videos || [];
 
