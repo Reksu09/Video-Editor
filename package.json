@@ -12,7 +12,6 @@
     "@google/generative-ai": "^0.24.1",
     "@remotion/cli": "4.0.421",
     "@remotion/tailwind-v4": "4.0.421",
-    "@remotion/transitions": "^4.0.421",
     "clsx": "^2.1.1",
     "ffmpeg": "^0.0.4",
     "lucide-react": "^0.563.0",

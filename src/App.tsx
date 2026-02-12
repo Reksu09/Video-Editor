@@ -101,15 +101,9 @@ const SortableVideoTrack = ({ video, index, isSelected, onSelect, ...props }: So
 
 const App: React.FC = () => {
     const [title1, setTitle1] = useState("Ranking The");
-    const [color1, setColor1] = useState("#FFFFFF");
     const [title2, setTitle2] = useState("Best");
-    const [color2, setColor2] = useState("#F6D555");
     const [title3, setTitle3] = useState("Make a Word");
-    const [color3, setColor3] = useState("#FFCC99");
     const [title4, setTitle4] = useState("Challenge");
-    const [color4, setColor4] = useState("#FFFFFF");
-    const [title5, setTitle5] = useState("");
-    const [color5, setColor5] = useState("#00de3b");
     const [videos, setVideos] = useState<VideoData[]>([]);
     const [isGenerating, setIsGenerating] = useState(false);
     const [isExporting, setIsExporting] = useState(false);
@@ -301,15 +295,9 @@ const App: React.FC = () => {
             // 2. Prepare props
             const props = {
                 title1,
-                color1,
                 title2,
-                color2,
                 title3,
-                color3,
                 title4,
-                color4,
-                title5,
-                color5,
                 listItems: finalItems,
             };
 
@@ -345,39 +333,30 @@ const App: React.FC = () => {
     };
 
     const fps = 30;
-    const transitionFrames = 5;
     let currentFrameCount = 0;
-    const videoTimings = videos.map((v, i) => {
+    const videoTimings = videos.map(v => {
         const start = currentFrameCount;
-        const duration = Math.max(0, Math.floor(((v.trimEnd || 10) - v.trimStart) * fps));
-
-        // The display sequence for this item starts at 'currentFrameCount'
-        // But for the NEXT item, we subtract the transition frames because they overlap
-        currentFrameCount += duration - transitionFrames;
-
-        return { ...v, calculatedStart: start, calculatedDuration: duration };
+        const duration = Math.max(0, Math.floor(((v.trimEnd || 0) - v.trimStart) * fps));
+        currentFrameCount += duration;
+        return { ...v, calculatedStart: start };
     });
 
     const finalItems = Array.from({ length: videoTimings.length }).map((_, i) => {
         const rank = i + 1;
         const v = videoTimings[videoTimings.length - 1 - i];
-        return {
-            text: v.text || "Type here...",
-            start: v.calculatedStart,
-            rank,
-            duration: v.calculatedDuration
-        };
+        const duration = Math.max(0, Math.floor(((v.trimEnd || 0) - v.trimStart) * fps));
+        return { text: v.text || "Type here...", start: v.calculatedStart, rank, duration };
     });
 
-    const totalDurationInFrames = Math.max(1, videos.reduce((acc, v, i) => {
+    const totalDurationInFrames = Math.max(1, videos.reduce((acc, v) => {
         const dur = Math.max(0, Math.floor(((v.trimEnd || 10) - v.trimStart) * fps));
-        return acc + dur - (i < videos.length - 1 ? transitionFrames : 0);
+        return acc + dur;
     }, 0));
 
     return (
         <div className="flex h-screen bg-gray-950 text-white font-sans overflow-hidden">
             {/* Sidebar - LEFT */}
-            <div className="w-[30em] flex-shrink-0 border-r border-gray-800 bg-gray-900 flex flex-col z-20">
+            <div className="w-96 flex-shrink-0 border-r border-gray-800 bg-gray-900 flex flex-col z-20">
                 <div className="p-6 border-b border-gray-800 flex items-center justify-between">
                     <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
                         Trending Rankings AI
@@ -389,84 +368,32 @@ const App: React.FC = () => {
                         <label className="flex items-center gap-2 text-[10px] font-bold text-gray-500 mb-2 uppercase tracking-widest">
                             <Type size={12} /> TITLE
                         </label>
-                        <div className='flex gap-2 mb-2'>
-                            <div className="flex-1 flex gap-1 bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 items-center focus-within:ring-1 focus-within:ring-emerald-500">
-                                <input
-                                    value={title1}
-                                    onChange={(e) => setTitle1(e.target.value)}
-                                    className="flex-1 bg-transparent text-sm text-white outline-none"
-                                    placeholder="Title 1"
-                                />
-                                <input
-                                    type="color"
-                                    value={color1}
-                                    onChange={(e) => setColor1(e.target.value)}
-                                    className="w-6 h-6 rounded cursor-pointer bg-transparent border-none p-0"
-                                />
-                            </div>
-                            <div className="flex-1 flex gap-1 bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 items-center focus-within:ring-1 focus-within:ring-emerald-500">
-                                <input
-                                    value={title2}
-                                    onChange={(e) => setTitle2(e.target.value)}
-                                    className="flex-1 bg-transparent text-sm outline-none"
-                                    style={{ color: color2 }}
-                                    placeholder="Title 2"
-                                />
-                                <input
-                                    type="color"
-                                    value={color2}
-                                    onChange={(e) => setColor2(e.target.value)}
-                                    className="w-6 h-6 rounded cursor-pointer bg-transparent border-none p-0"
-                                />
-                            </div>
-                        </div>
-
-                        <div className='flex gap-2 mb-2'>
-                            <div className="flex-1 flex gap-1 bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 items-center focus-within:ring-1 focus-within:ring-emerald-500">
-                                <input
-                                    value={title3}
-                                    onChange={(e) => setTitle3(e.target.value)}
-                                    className="flex-1 bg-transparent text-sm outline-none"
-                                    style={{ color: color3 }}
-                                    placeholder="Title 3"
-                                />
-                                <input
-                                    type="color"
-                                    value={color3}
-                                    onChange={(e) => setColor3(e.target.value)}
-                                    className="w-6 h-6 rounded cursor-pointer bg-transparent border-none p-0"
-                                />
-                            </div>
-                            <div className="flex-1 flex gap-1 bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 items-center focus-within:ring-1 focus-within:ring-emerald-500">
-                                <input
-                                    value={title4}
-                                    onChange={(e) => setTitle4(e.target.value)}
-                                    className="flex-1 bg-transparent text-sm outline-none"
-                                    style={{ color: color4 }}
-                                    placeholder="Title 4"
-                                />
-                                <input
-                                    type="color"
-                                    value={color4}
-                                    onChange={(e) => setColor4(e.target.value)}
-                                    className="w-6 h-6 rounded cursor-pointer bg-transparent border-none p-0"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="flex gap-1 bg-gray-800 border border-gray-700 rounded-lg px-2 py-1 items-center focus-within:ring-1 focus-within:ring-emerald-500">
+                        <div className='grid grid-cols-3 gap-2 mb-2'>
                             <input
-                                value={title5}
-                                onChange={(e) => setTitle5(e.target.value)}
-                                className="flex-1 bg-transparent text-sm outline-none"
-                                style={{ color: color5 }}
-                                placeholder="Sub header"
+                                value={title1}
+                                onChange={(e) => setTitle1(e.target.value)}
+                                className="w-full bg-gray-800 border col-span-2 border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:ring-1 focus:ring-emerald-500 outline-none transition-all"
+                                placeholder="Enter video title..."
                             />
                             <input
-                                type="color"
-                                value={color5}
-                                onChange={(e) => setColor5(e.target.value)}
-                                className="w-6 h-6 rounded cursor-pointer bg-transparent border-none p-0"
+                                value={title2}
+                                onChange={(e) => setTitle2(e.target.value)}
+                                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-yellow-300 focus:ring-1 focus:ring-emerald-500 outline-none transition-all"
+                                placeholder="Enter video title..."
+                            />
+                        </div>
+                        <div className='grid grid-cols-3 gap-2'>
+                            <input
+                                value={title3}
+                                onChange={(e) => setTitle3(e.target.value)}
+                                className="w-full bg-gray-800 border col-span-2 border-gray-700 rounded-lg px-3 py-2 text-sm text-[#FFCC99] focus:ring-1 focus:ring-emerald-500 outline-none transition-all"
+                                placeholder="Enter video title..."
+                            />
+                            <input
+                                value={title4}
+                                onChange={(e) => setTitle4(e.target.value)}
+                                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:ring-1 focus:ring-emerald-500 outline-none transition-all"
+                                placeholder="Enter video title..."
                             />
                         </div>
                     </div>
@@ -546,15 +473,9 @@ const App: React.FC = () => {
                                         compositionHeight={1920}
                                         inputProps={{
                                             title1,
-                                            color1,
                                             title2,
-                                            color2,
                                             title3,
-                                            color3,
                                             title4,
-                                            color4,
-                                            title5,
-                                            color5,
                                             listItems: finalItems,
                                             videos: videos.map(v => ({
                                                 url: v.url,

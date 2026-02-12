@@ -1,64 +1,58 @@
 {
   "title1": "Ranking The",
-  "color1": "#FFFFFF",
   "title2": "Best",
-  "color2": "#F6D555",
   "title3": "Make a Word",
-  "color3": "#FFCC99",
   "title4": "Challenge",
-  "color4": "#FFFFFF",
-  "title5": "",
-  "color5": "#00de3b",
   "listItems": [
     {
-      "text": "Type here...",
-      "start": 432,
+      "text": "Oops 🤣",
+      "start": 558,
       "rank": 1,
-      "duration": 210
+      "duration": 175
     },
     {
-      "text": "Type here...",
-      "start": 280,
+      "text": "Focus 💪",
+      "start": 360,
       "rank": 2,
-      "duration": 157
+      "duration": 198
     },
     {
-      "text": "Type here...",
-      "start": 160,
+      "text": "Clever ✨",
+      "start": 162,
       "rank": 3,
-      "duration": 125
+      "duration": 198
     },
     {
-      "text": "Type here...",
+      "text": "Wordplay 🤓",
       "start": 0,
       "rank": 4,
-      "duration": 165
+      "duration": 162
     }
   ],
   "videos": [
     {
       "trimStart": 0,
-      "trimEnd": 5.515,
-      "text": "",
-      "url": "/exports/source/1770865402517-1.mp4"
+      "trimEnd": 5.409,
+      "text": "Wordplay 🤓",
+      "url": "/exports/source/1770795080565-1.mp4"
     },
     {
       "trimStart": 0,
-      "trimEnd": 4.175,
-      "text": "",
-      "url": "/exports/source/1770865402525-2.mp4"
+      "trimEnd": 6.627,
+      "text": "Clever ✨",
+      "url": "/exports/source/1770795080573-2.mp4"
     },
     {
       "trimStart": 0,
-      "trimEnd": 5.262,
-      "text": "",
-      "url": "/exports/source/1770865402534-3.mp4"
+      "trimEnd": 6.609,
+      "text": "Focus 💪",
+      "url": "/exports/source/1770795080584-3.mp4"
     },
     {
       "trimStart": 0,
-      "trimEnd": 7.007,
-      "text": "",
-      "url": "/exports/source/1770865402545-4.mp4"
+      "trimEnd": 5.856,
+      "text": "Oops 🤣",
+      "url": "/exports/source/1770795080595-4.mp4"
     }
   ]
 }
