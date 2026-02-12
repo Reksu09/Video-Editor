@@ -41,7 +41,8 @@
     "start": "vite",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "check": "remotion diagnostics"
   },
   "sideEffects": [
     "*.css"

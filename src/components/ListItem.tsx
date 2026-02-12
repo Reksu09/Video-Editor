@@ -6,7 +6,7 @@ const COLORS = [
     '#FFFF00', // 1. Yellow
     '#00FF00', // 2. Green
     '#FFA500', // 3. Orange
-    '#808080', // 4. Grey
+    '#525252', // 4. Grey
     '#FFFFFF', // 5. White
 ];
 
@@ -62,8 +62,10 @@ export const ListItem: React.FC<ListItemProps> = ({ index, text, startFrame, dis
                 color: numberColor,
                 marginRight: 10,
                 fontSize: 70,
-                // WebkitTextStroke: '4px black' // Outline for number too?
+                // WebkitTextStroke: '2px black', // Outline for number too?
                 textShadow: '8px 8px 10px rgba(0,0,0,1)',
+                // textShadow: 'text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000;'
+
             }}>
                 {rankToDisplay}.
             </span>
@@ -73,7 +75,8 @@ export const ListItem: React.FC<ListItemProps> = ({ index, text, startFrame, dis
                 // "add outline on the letters except the emojis"
                 // CSS text-stroke adds outline.
                 WebkitTextStroke: '5px black',
-                paintOrder: 'stroke fill'
+                paintOrder: 'stroke fill',
+                marginLeft: 10,
             }}>
                 {visibleText}
                 <span style={{

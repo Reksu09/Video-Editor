@@ -7,7 +7,7 @@ const API_KEY = "AIzaSyDHKMsc_Q-QKKBMCZ7mFlxOC4MErLq1mvo";
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const model = genAI.getGenerativeModel({
-    model: "gemini-2.5-flash",
+    model: "gemini-2.5-pro",
     systemInstruction: `
 Your Role: You are a social media manager specializing in viral memes and internet culture. You are a strategist for viral short-form video content on platforms like YouTube Shorts, TikTok, and Instagram Reels.
 

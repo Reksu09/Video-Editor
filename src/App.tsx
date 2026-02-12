@@ -320,7 +320,10 @@ const App: React.FC = () => {
                 body: JSON.stringify({ props, videoFiles: videoFilesData })
             });
 
-            if (!response.ok) throw new Error(await response.text());
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ error: 'Unknown server error' }));
+                throw new Error(errorData.details || errorData.error || 'Export failed');
+            }
 
             const result = await response.json();
 
@@ -333,9 +336,9 @@ const App: React.FC = () => {
                 link.click();
                 document.body.removeChild(link);
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Export failed:", error);
-            alert("Export failed. Make sure you are running the app locally.");
+            alert(`Export failed: ${error.message}\n\nCheck the terminal for more details.`);
         } finally {
             setIsExporting(false);
         }
